@@ -4,12 +4,12 @@ CROSS_COMPILE :=
 # 编译器在编译时的参数设置
 CFLAGS := -Wall -Wno-unused-function -Werror -O2 -g
 # 添加头文件路径
-CFLAGS += -I$(PWD) -I./onvif -I./client -I./soap
+CFLAGS += -I$(PWD) -I./onvif -I./client -I./soap -I./com
 
 # 链接器的链接参数设置 比如库文件
-LDFLAGS := -lpthread -lgsoap++
+LDFLAGS := -lpthread
 
-EXTRA_CFLAGS := #-DDEBUG
+EXTRA_CFLAGS := -DSOAP_DEBUG
 
 # 添加项目中所有用到的源文件，如.c文件，子文件夹(格式/*.c)
 # 添加到库中的源文件
@@ -17,17 +17,27 @@ lib-y :=
 
 # 添加到可执行程序中的源文件
 obj-y := 
-obj-y += client/onvif_client_discovery.cpp
 
+# com
+obj-y += com/log.c
+
+# client personal src
+obj-y += client/onvif_cli_discovery.cpp
+
+# onvif src
 obj-y += onvif/soapC.cpp
 obj-y += onvif/soapwsddProxy.cpp
 # obj-y += onvif/soapwsddService.cpp
 
+# soap src
 # obj-y += soap/chrono_duration.cpp
 # obj-y += soap/duration.c
-# obj-y += soap/stdsoap2.cpp
+obj-y += soap/stdsoap2.cpp
 # obj-y += soap/wsdlC.cpp
-# obj-y += soap/dom.cpp
+obj-y += soap/dom.cpp
+
+# demo
+obj-y += demo/main.cpp
 
 # build目录
 BUILD_PATH = build
