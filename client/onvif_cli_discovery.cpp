@@ -4,6 +4,7 @@
 #include "onvif_cli_discovery.h"
 
 #include "onvif_common.h"
+#include "wsdd.nsmap"
 
 #define LOG_TAG "client.dis"
 #include "log.h"

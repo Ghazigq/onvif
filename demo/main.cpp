@@ -1,6 +1,4 @@
-#include <iostream>
-#include "wsdd.nsmap"
-
+#include <unistd.h>
 #include "onvif_cli_discovery.h"
 
 #define LOG_TAG "main"
