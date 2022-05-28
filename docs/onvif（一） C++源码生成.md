@@ -85,3 +85,5 @@ soapcpp2使用：-x 不生成xml文件 -j 生成c++源码 -L 不生成soapClient
 ```
 cd onvif && soapcpp2 onvif.h -j -x -I $GSOAP_PATH/gsoap/import -I $GSOAP_PATH/gsoap && cd -
 ```
+
+-----------------源码:https://github.com/Ghazigq/onvif.git-----------------
