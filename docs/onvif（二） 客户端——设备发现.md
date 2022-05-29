@@ -64,5 +64,6 @@ int onvif_cli_dev_discovery(int timeout) {
 
 ### 3）编译
     除上述文件外，onvif源码只需编译包括：soapC.cpp soapwsddProxy.cpp
+    编译选项：SOAP_DEBUG 会生成log文件，便于排查问题
 
 ----------------源码:https://github.com/Ghazigq/onvif.git-----------------
