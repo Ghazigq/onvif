@@ -16,8 +16,8 @@ static int test_discover_device(void) {
     ret = onvif_cli_dev_discovery(dev, DISCOVER_DEV_MAX_NUM, DISCOVER_DEV_TIMEOUT);
     if (ret > 0) {
         for (i = 0; i < ret; i++) {
+            log_i("Device name : %s", dev[i].name);
             log_i("Device Address : %s", dev[i].endpoint);
-            // log_i("Device name : %s", dev[i].info.name);
             // log_i("Device hardware : %s", dev[i].info.hardware);
             // log_i("Device location : %s", dev[i].info.location);
         }
