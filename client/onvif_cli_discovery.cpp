@@ -33,10 +33,11 @@ int onvif_cli_dev_discovery(onvif_cli_dis_dev_t* dev, int max_nums, int timeout)
     discovery.soap_header(wsa__MessageID, NULL, NULL, NULL, NULL, (char*)wsa_To, (char*)wsa_Action,
                           NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
-    // 目的地址及端口
+    // 目的地址及端口 该地址及端口也使用于SSDP服务，因此必须要过滤非onvif设备
     discovery.soap_endpoint = "soap.udp://239.255.255.250:3702";
 
     // 搜索设备类型 tdn为命名空间前缀，对应http://www.onvif.org/ver10/network/wsdl
+    // DH-2H3400-ADW设备存在不能发现问题（目前解决办法是不过滤Types，同时注释soapC.cpp中"wsa:To"、"wsa:Action"的soap->mustUnderstand = 1; 但需要对回复包过滤非onvif）
     req.Types = (char*)"tdn:NetworkVideoTransmitter";
     ret       = discovery.send_Probe(&req);
     LOG_CHECK(ret != SOAP_OK, return -1);
